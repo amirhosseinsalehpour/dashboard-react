@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCabiens } from "../../services/apiCabins";
+import { getCabins } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import Table from "../../ui/Table";
@@ -13,15 +13,15 @@ function CabinTable() {
     data: cabins,
     // error,
   } = useQuery({
-    queryKey: ["carbin"],
-    queryFn: getCabiens,
+    queryKey: ["cabin"],
+    queryFn: getCabins,
   });
 
   const [searchParams] = useSearchParams();
   if (isLoading) return <Spinner />;
 
   // if cabin in empty:
-  if (!cabins.length) return <Empty resourceName="booking" />;
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
   // Filter
   const filterValue = searchParams.get("discount") || "all";

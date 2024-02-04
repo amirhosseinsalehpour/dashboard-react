@@ -6,10 +6,10 @@ import { useBookings } from "./useBookings";
 import Spinner from "../../ui/Spinner";
 
 function BookingTable() {
-  const { booking, isLoading } = useBookings();
-  console.log(booking);
+  const { bookings, isLoading } = useBookings();
+  console.log(bookings);
   if (isLoading) return <Spinner />;
-  if (!booking.length) return <Empty resourceName="booking" />;
+  if (!bookings.length) return <Empty resourceName="booking" />;
   return (
     <Menus>
       <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
@@ -21,8 +21,8 @@ function BookingTable() {
           <div>Amount</div>
           <div></div>
         </Table.Header>
-        {booking.map((book) => (
-          <BookingRow key={book.id} book={book} />
+        {bookings.map((book) => (
+          <BookingRow key={book.id} bookings={book} />
         ))}
       </Table>
     </Menus>

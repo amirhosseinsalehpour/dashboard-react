@@ -1,6 +1,6 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-export async function getCabiens() {
+export async function getCabins() {
   const { data, error } = await supabase.from("cabins").select("*");
 
   if (error) {
@@ -11,7 +11,7 @@ export async function getCabiens() {
   return data;
 }
 
-export async function createEditCaben(newCabin, id) {
+export async function createEditCabin(newCabin, id) {
   const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
 
   const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
@@ -23,7 +23,7 @@ export async function createEditCaben(newCabin, id) {
     ? newCabin.image
     : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
 
-  // creat cabin
+  // create cabin
   let query = supabase.from("cabins");
 
   // Create
@@ -41,7 +41,7 @@ export async function createEditCaben(newCabin, id) {
 
   // upload image
   if (hasImagePath) return data;
-  
+
   if (hasImagePath) return data;
   const { error: storageError } = await supabase.storage
     .from("cabin-images")

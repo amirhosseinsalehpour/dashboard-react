@@ -43,7 +43,7 @@ const Amount = styled.div`
 `;
 
 function BookingRow({
-  book: {
+  bookings: {
     id: bookingId,
     created_at,
     startDate,
