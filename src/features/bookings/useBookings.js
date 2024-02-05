@@ -5,11 +5,11 @@ import { useSearchParams } from "react-router-dom";
 export function useBookings() {
   const [searchParams] = useSearchParams();
 
-  const FilterValue = searchParams.get("status");
+  const filterValue = searchParams.get("status");
   const filter =
-    !FilterValue || FilterValue === "all"
+    !filterValue || filterValue === "all"
       ? null
-      : { felid: "status", value: FilterValue };
+      : { field: "status", value: filterValue };
 
   const {
     isLoading,
